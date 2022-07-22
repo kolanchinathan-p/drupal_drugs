@@ -1,0 +1,39 @@
+{%  set base_url = path('<front>')  %}
+
+  <section>
+    {% set i = 0 %}
+    {% if items  %}
+      <article class="list">
+          <h2> {{ drugName }} </h2>
+          {{ search_filter_form }}
+
+          <table class="drug">
+              {% for item in items %}
+              <tr>
+                  <td> <strong>{{ item.pharmacy.PharmaName }}</strong><br>
+                      <span>{{ item.pharmacy.Address1|title }}</span><br>
+                      <span>{{ item.pharmacy.City|title }}, {{ item.pharmacy.State }}</span><br>
+                      <span>{{ item.pharmacy.PostalCode| split('-') | first }}</span>
+                   </td>
+                  <td><span>${{item.price.unit_retail_price|number_format(2, '.', ',')}}</span><br>
+                      <span> <s> est.retail</s></span>
+                  </td>
+                  <td><span>${{item.price.unit_cost|number_format(2, '.', ',')}}</span>
+                  </td>
+                  <td style="text-align:right;"> <button>Get Coupon</button> </td>
+              </tr>
+              {% set z = z + 1 %}
+              {% endfor %}
+
+          </table>
+      </article>
+      {% endif %}
+  </section>
+
+  <div class="spinner-wrapper d-none" id="spinner-wrapper">
+    <div class="lds-css ng-scope">
+      <div class="lds-ripple" style="width:100%;height:100%">
+        Loading...
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,76 @@
+<?php
+
+
+use Drupal\node\Entity\Node;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Form\ConfigFormBase;
+use Drupal\Component\Utility\Unicode;
+use Drupal\taxonomy\Entity\Term;
+/**
+ * Implements hook_theme().
+ */
+
+function drug_theme() {
+  return array(
+    'drug_search_results' => array(
+      'variables' => array(
+        'ap_theme_path'=> NULL,
+        'search_filter_form' => NULL,
+        'items' => array(),
+        'names' => array(),
+        'selected_name' => NULL,
+        'quantities' => array(),
+        'selected_qty' => NULL,
+        'strengths' => array(),
+        'selected_strength' =>NULL,
+        'forms' => array(),
+        'selected_form' => NULL,
+        'drug_info' => array(),
+        'groupNumber' => NULL,
+        'location' => NULL,
+        'drugName' => NULL,
+        'show_prescription_card' => NULL,
+        'sitename' => NULL,
+      ),
+      'template' => 'drug-search-result'
+    ),
+    'drug_search_filter_form' => array(
+      'render element' => 'form',
+      'template' => 'drug-search-filter-form'
+    ),
+    'drug_search_form' => array(
+      'render element' => 'form',
+      'template' => 'drug-search-form'
+    ),
+  );
+}
+
+
+
+function tempStoreset($tempstorekey, $tempstoreval){
+
+  if (!empty($tempstorekey)){
+    $tempstore = \Drupal::service('tempstore.private')->get('drug');
+
+    try {
+      $tempstore->set($tempstorekey, $tempstoreval);
+    }
+    catch(Exception $e){
+      ap_logger_save('tempstoreset', 'error', $e->getMessage());
+    }
+  }
+}
+
+function tempStoredelete($tempstorekey){
+
+  if (!empty($tempstorekey)){
+    $tempstore = \Drupal::service('tempstore.private')->get('drug');
+
+    try {
+      $tempstore->delete($tempstorekey);
+    }
+    catch(Exception $e){
+      ap_logger_save('tempstoredelete', 'error', $e->getMessage());
+    }
+  }
+}

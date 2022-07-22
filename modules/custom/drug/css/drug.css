@@ -1,0 +1,87 @@
+.container {
+    display: inline;
+    padding: 20px;
+}
+
+.menu {
+    width: 20%;
+}
+
+.list {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+.drug tr {
+
+    position: relative;
+}
+
+table select {
+    width: 100%;
+
+}
+td { padding:5px; }
+
+.filter {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+/* ul {
+    border: 1px solid #ddd;
+    margin: 25px;
+    padding: 7px;
+}
+
+ul li {
+    list-style: none;
+    padding: 8px;
+} */
+
+.drug tr:after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    background: #000;
+    display: inline;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+/* Loader */
+.d-none{
+  display: none !important;
+}
+ .spinner-wrapper, .purchase_spinner {
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  z-index: 10000;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  left: 0;
+  right: 0;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#spinner-wrapper>.lds-css.ng-scope {
+  margin: 0 auto
+}

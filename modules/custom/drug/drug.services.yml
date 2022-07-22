@@ -1,0 +1,7 @@
+services:
+  # Twig extension.
+
+  webform.twig_extension:
+    class: Drupal\drug\Twig\TwigExtension
+    tags:
+      - { name: twig.extension }

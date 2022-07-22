@@ -1,0 +1,348 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function drug_schema() {
+  $schema = [];
+  $schema['drugs'] = [
+    'description' => 'Drugs details',
+    'fields' => [
+      'id'         => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique Drug ID.',
+      ],
+      'HICL_SEQNO' => [
+        'type' => 'int',
+        'default' => 0,
+        'description' => "HICL_SEQNO",
+      ],
+       'MEDID' => [
+         'type' => 'int',
+         'default' => 0,
+         'description' => "MEDID",
+      ],
+       'NDC' => [
+         'type' => 'int',
+         'default' => 0,
+         'size' => 'big',
+         'description' => "NDC",
+      ],
+      'DrugName' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'description' => 'Name of the Drug.',
+      ],
+       'Slug' => [
+         'type' => 'varchar',
+         'length' => 150,
+         'default' => '',
+         'description' => 'Slug name.',
+      ],
+      'genericDrugName' => [
+          'type'     => 'varchar',
+          'length'   => 150,
+          'null' => TRUE,
+       ],
+       'formLabel' => [
+         'type'     => 'varchar',
+         'length'   => 150,
+         'null' => TRUE,
+      ],
+      'strength' => [
+        'type'     => 'varchar',
+        'length'   => 150,
+        'null' => TRUE,
+      ],
+      'brandgeneric_code' => [
+        'type' => 'int',
+        'default' => 0,
+        'size' => 'tiny',
+        'description' => 'brand generic code.',
+      ],
+      'brandgeneric_desc' => [
+      'type'     => 'varchar',
+      'length'   => 150,
+      'null' => TRUE,
+      ],
+      'DescriptionHeader' => [
+        'type'     => 'varchar',
+        'length'   => 50,
+        'null' => TRUE,
+      ],
+      'Description' => [
+        'type'      => 'text',
+        'null' => TRUE,
+      ],
+       'DescriptionFooter' => [
+         'type'      => 'text',
+         'null' => TRUE,
+      ],
+      'Contradictions_Header' => [
+        'type'      => 'text',
+        'null' => TRUE,
+      ],
+      'Contradictions' => [
+        'type'      => 'text',
+        'null' => TRUE,
+      ],
+       'SideEffects_Header' => [
+         'type'      => 'text',
+         'null' => TRUE,
+      ],
+      'SideEffects' => [
+        'type'      => 'text',
+        'null' => TRUE,
+      ],
+       'SideEffects_Footer' => [
+         'type'      => 'text',
+         'null' => TRUE,
+      ],
+    ],
+    'primary key' => [
+      'id',
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'NDC' => ['NDC'],
+      'DrugName' => ['DrugName'],
+      'Slug' => ['Slug']
+    ],
+  ];
+
+  $schema['pharmacies'] = [
+    'description' => 'Pharmacies details',
+    'fields' => [
+      'NPI' => [
+        'type' => 'int',
+        'null' => TRUE,
+        'description' => "NPI",
+      ],
+       'PharmAffil_id' => [
+         'type'     => 'varchar',
+         'length'   => 10,
+         'null' => TRUE,
+         'description' => "PharmAffil_id",
+      ],
+      'PharmaName' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'description' => 'Name of the Pharmacy.',
+      ],
+       'Address1' => [
+         'type' => 'varchar',
+         'length' => 250,
+         'default' => '',
+         'description' => 'Address1.',
+      ],
+      'City' => [
+          'type'     => 'varchar',
+          'length'   => 150,
+          'null' => TRUE,
+       ],
+       'State' => [
+         'type'     => 'varchar',
+         'length'   => 10,
+         'null' => TRUE,
+      ],
+      'PostalCode' => [
+        'type'     => 'varchar',
+        'length'   => 15,
+        'null' => TRUE,
+      ],
+      'Lat' => [
+        'type'     => 'varchar',
+        'length'   => 15,
+        'null' => TRUE,
+      ],
+      'lng' => [
+        'type'     => 'varchar',
+        'length'   => 15,
+        'null' => TRUE,
+      ],
+      'PSAOName' => [
+      'type'     => 'varchar',
+      'length'   => 150,
+      'null' => TRUE,
+      ],
+      'PharmacyChain' => [
+        'type'     => 'varchar',
+        'length'   => 150,
+        'null' => TRUE,
+      ],
+      'MegaChainName' => [
+        'type'     => 'varchar',
+        'length'   => 150,
+        'null' => TRUE,
+      ],
+    ],
+    'indexes' => [
+      'NPI' => ['NPI'],
+      'PharmAffil_id' => ['PharmAffil_id'],
+      'MegaChainName' => ['MegaChainName']
+    ],
+  ];
+  $schema['prices'] = [
+    'description' => 'Prices details',
+    'fields' => [
+       'NDC' => [
+         'type' => 'int',
+         'default' => 0,
+         'size' => 'big',
+         'description' => "NDC",
+      ],
+      'MegaChainNameNew' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'description' => 'MegaChainNameNew.',
+      ],
+       'AffilID' => [
+         'type' => 'varchar',
+         'length' => 150,
+         'default' => '',
+         'description' => 'AffilID.',
+      ],
+      'unit_cost' => [
+          'type'     => 'varchar',
+          'length'   => 150,
+          'null' => TRUE,
+       ],
+       'unit_retail_price' => [
+         'type'     => 'varchar',
+         'length'   => 150,
+         'null' => TRUE,
+      ],
+    ],
+    'indexes' => [
+      'NDC' => ['NDC'],
+      'AffilID' => ['AffilID'],
+      'unit_cost' => ['unit_cost']
+    ],
+  ];
+  return $schema;
+}
+
+
+ /**
+  *  hook_install()
+  */
+ function drug_install() {
+   $drugs = [];
+
+   $database = \Drupal::database();
+
+   //Drug Table - Data Insert from CSV file
+   $drugs_absolute_path = realpath("TestData/drugs.csv");
+   $drugs_file = 'file://'  . $drugs_absolute_path;
+
+   if(file_exists($drugs_file) && is_readable($drugs_file)){
+     $drugs_file_handle = fopen($drugs_file, "r");
+     while (!feof($drugs_file_handle)) {
+       $item = fgetcsv($drugs_file_handle);
+
+       if($item[0] != 'HICL_SEQNO'){
+         $drugs[] = [
+            'HICL_SEQNO' => $item[0],
+            'MEDID' => $item[1],
+            'NDC' => $item[2],
+            'DrugName' => $item[3],
+            'Slug' => $item[4],
+            'genericDrugName' => $item[5],
+            'formLabel' => $item[6],
+            'strength' => $item[7],
+            'brandgeneric_code' => $item[8],
+            'brandgeneric_desc' => $item[9],
+            'DescriptionHeader' => $item[10],
+            'Description' => $item[11],
+            'DescriptionFooter' => $item[12],
+            'Contradictions_Header' => $item[13],
+            'Contradictions' => $item[14],
+            'SideEffects_Header' => $item[15],
+            'SideEffects' => $item[16],
+            'SideEffects_Footer' => $item[17]
+         ];
+
+       }
+     }
+     fclose($drugs_file_handle);
+
+     $query = $database->insert('drugs')->fields(['HICL_SEQNO', 'MEDID', 'NDC','DrugName', 'Slug', 'genericDrugName','formLabel', 'strength', 'brandgeneric_code','brandgeneric_desc', 'DescriptionHeader', 'Description','DescriptionFooter', 'Contradictions_Header', 'Contradictions','SideEffects_Header', 'SideEffects', 'SideEffects_Footer' ]);
+     foreach ($drugs as $drug_row) {
+       $query->values($drug_row);
+     }
+     $query->execute();
+   }
+
+   //Pharmacies Table - Data Insert from CSV file
+   $pharm_absolute_path = realpath("TestData/pharmacies.csv");
+   $pharm_file = 'file://'  . $pharm_absolute_path;
+
+   if(file_exists($pharm_file) && is_readable($pharm_file)){
+     $pharm_file_handle = fopen($pharm_file, "r");
+     while (!feof($pharm_file_handle)) {
+       $ph_item = fgetcsv($pharm_file_handle);
+
+       if($ph_item[0] != 'NPI'){
+         $pharmacies[] = [
+            'NPI' => $ph_item[0],
+            'PharmAffil_id' => $ph_item[1],
+            'PharmaName' => $ph_item[2],
+            'Address1' => $ph_item[3],
+            'City' => $ph_item[4],
+            'State' => $ph_item[5],
+            'PostalCode' => $ph_item[6],
+            'Lat' => $ph_item[7],
+            'lng' => $ph_item[8],
+            'PSAOName' => $ph_item[9],
+            'PharmacyChain' => $ph_item[10],
+            'MegaChainName' => $ph_item[11]
+         ];
+
+       }
+     }
+     fclose($pharm_file_handle);
+
+     $phrm_query = $database->insert('pharmacies')->fields(['NPI', 'PharmAffil_id', 'PharmaName','Address1', 'City', 'State', 'PostalCode','Lat','lng', 'PSAOName', 'PharmacyChain','MegaChainName']);
+     foreach ($pharmacies as $pharm_row) {
+       $phrm_query->values($pharm_row);
+     }
+     $phrm_query->execute();
+   }
+
+   //Prices Table - Data Insert from CSV file
+   $prices_absolute_path = realpath("TestData/prices.csv");
+   $prices_file = 'file://'  . $prices_absolute_path;
+
+   if(file_exists($prices_file) && is_readable($prices_file)){
+     $prices_file_handle = fopen($prices_file, "r");
+     while (!feof($prices_file_handle)) {
+       $pr_item = fgetcsv($prices_file_handle);
+
+       if($pr_item[0] != 'NDC'){
+         $prices[] = [
+            'NDC' => $pr_item[0],
+            'MegaChainNameNew' => $pr_item[1],
+            'AffilID' => $pr_item[2],
+            'unit_cost' => $pr_item[3],
+            'unit_retail_price' => $pr_item[4]
+         ];
+
+       }
+     }
+     fclose($prices_file_handle);
+
+     $price_query = $database->insert('prices')->fields(['NDC', 'MegaChainNameNew', 'AffilID','unit_cost', 'unit_retail_price']);
+     foreach ($prices as $price_row) {
+       $price_query->values($price_row);
+     }
+     $price_query->execute();
+   }
+
+
+
+
+ }

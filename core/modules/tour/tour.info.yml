@@ -1,0 +1,10 @@
+name: Tour
+type: module
+description: 'Displays guided tours of the site interface.'
+package: Core
+# version: VERSION
+
+# Information added by Drupal.org packaging script on 2022-07-07
+version: '9.4.2'
+project: 'drupal'
+datestamp: 1657157377

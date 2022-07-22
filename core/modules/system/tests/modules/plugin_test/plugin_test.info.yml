@@ -1,0 +1,10 @@
+name: 'Plugin Test Support'
+type: module
+description: 'Test that plugins can provide plugins and provide namespace discovery for plugin test implementations.'
+package: Testing
+# version: VERSION
+
+# Information added by Drupal.org packaging script on 2022-07-07
+version: '9.4.2'
+project: 'drupal'
+datestamp: 1657157377

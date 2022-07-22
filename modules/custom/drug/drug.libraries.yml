@@ -1,0 +1,11 @@
+drug:
+  version: 1.x
+  css:
+    theme:
+      css/drug.css: {}
+  js:
+    js/drug.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.dialog.ajax

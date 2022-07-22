@@ -1,0 +1,17 @@
+drug.autocomplete:
+  path: '/drug-autocomplete/{field_name}'
+  defaults:
+    _controller: '\Drupal\drug\Controller\Drug::autoComplete'
+    _format: json
+  requirements:
+    _access: 'TRUE'
+drug.search:
+  path: '/drug/{drug_name}'
+  defaults:
+    _controller: '\Drupal\drug\Controller\Drug::search'
+    _title: 'Drug Search'
+  requirements:
+    _access: 'TRUE'
+  options:
+    _maintenance_access: FALSE
+    no_cache: TRUE

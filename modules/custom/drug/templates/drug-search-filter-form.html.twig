@@ -1,0 +1,16 @@
+
+<table class="filter">
+  <tr>
+      <td colspan="4" style="text-align:left;font-weight:bold;">Filter By</td>
+  </tr>
+    <tr>
+        <td>{{ form.bdrugnameFilter }} </td>
+        <td>{{ form.drugformFilter }} </td>
+        <td>{{ form.drugstrFilter }} </td>
+        <td>{{ form.drugquantFilter }}</td>
+        <td> {{form.custom_quantity}}</td>
+
+    </tr>
+</table>
+
+{{ form|without('change_order', 'bdrugnameFilter', 'drugformFilter', 'drugstrFilter', 'drugquantFilter', 'custom_quantity') }}
